@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Patcher2.Features;
+using SimpleLogger;
 using Brush = System.Drawing.Brush;
 using Color = System.Drawing.Color;
 using Control = System.Windows.Forms.Control;
@@ -67,9 +68,9 @@ namespace Patcher2.Forms
             while (true)
             {
                 var rads = PathScanner.GetRADS();
-                if (rads == null || !Directory.Exists(rads))
+                if (rads == null)
                 {
-                    var result = MessageBox.Show("Failed to locate RADS folder\r\nIncorrect path?", "Patcher", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    var result = MessageBox.Show("Failed to locate League of Legends directory\r\nIncorrect path?", "Patcher", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                     if (result == DialogResult.Retry)
                     {
                         continue;
@@ -83,7 +84,7 @@ namespace Patcher2.Forms
                 else
                 {
                     var exe = PathScanner.GetEXE(rads);
-                    if (exe == null || !File.Exists(exe))
+                    if (exe == null)
                     {
                         var result = MessageBox.Show("Failed to locate League of Legends.exe file\r\nIncorrect path?", "Patcher", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                         if (result == DialogResult.Retry)

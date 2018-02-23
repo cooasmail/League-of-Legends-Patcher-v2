@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using SimpleLogger;
 
 namespace Patcher2
 {
@@ -9,24 +10,33 @@ namespace Patcher2
     {
         public static string GetRADS()
         {
+            Logger.Log("Looking for RADS directory..");
+
             var v1 = RiotGamesReg();
-            if (v1 != null)
+            Logger.Log($"RiotGamesReg: {v1} (exists: {Directory.Exists(v1)})");
+            if (Directory.Exists(v1))
             {
+                Logger.Log("Success!");
                 return v1;
             }
 
             var v2 = RiotGamesIncReg();
-            if (v2 != null)
+            Logger.Log($"RiotGamesIncReg: {v2} (exists: {Directory.Exists(v2)})");
+            if (Directory.Exists(v2))
             {
+                Logger.Log("Success!");
                 return v2;
             }
 
             var v3 = AskUser();
-            if (v3 != null)
+            Logger.Log($"AskUser: {v3} (exists: {Directory.Exists(v3)})");
+            if (Directory.Exists(v3))
             {
+                Logger.Log("Success!");
                 return v3;
             }
 
+            Logger.Log("Failed to locate RADS directory");
             return null;
         }
 
@@ -79,11 +89,15 @@ namespace Patcher2
 
         public static string GetEXE(string RADS)
         {
+            Logger.Log("Looking for EXE file..");
+
             var releases = Path.Combine(RADS, @"solutions\lol_game_client_sln\releases");
 
             // bad
+            Logger.Log($"releases: {releases} (exists: {Directory.Exists(releases)})");
             if (!Directory.Exists(releases))
             {
+                Logger.Log("Failed to locate EXE file");
                 return null;
             }
 
@@ -92,11 +106,14 @@ namespace Patcher2
             var verDir = GetNewest(subDirs);
             var path = Path.Combine(releases, verDir, @"deploy\League of Legends.exe");
 
+            Logger.Log($"EXE: {path} (exists: {File.Exists(path)})");
             if (!File.Exists(path))
             {
+                Logger.Log("Failed to locate EXE file");
                 return null;
             }
 
+            Logger.Log("Success!");
             return path;
         }
 
