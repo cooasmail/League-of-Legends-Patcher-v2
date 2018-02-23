@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Windows.Input;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using SimpleLogger;
@@ -12,32 +13,52 @@ namespace Patcher2
         {
             Logger.Log("Looking for RADS directory..");
 
-            var v1 = RiotGamesReg();
-            Logger.Log($"RiotGamesReg: {v1} (exists: {Directory.Exists(v1)})");
-            if (Directory.Exists(v1))
+            if (Keyboard.IsKeyDown(Key.LeftShift))
             {
-                Logger.Log("Success!");
-                return v1;
-            }
+                Logger.Log("LeftShit is down - forcing AskUser..");
 
-            var v2 = RiotGamesIncReg();
-            Logger.Log($"RiotGamesIncReg: {v2} (exists: {Directory.Exists(v2)})");
-            if (Directory.Exists(v2))
+                var v3 = AskUser();
+                Logger.Log($"AskUser: {v3} (exists: {Directory.Exists(v3)})");
+                if (Directory.Exists(v3))
+                {
+                    Logger.Log("Success!");
+                    return v3;
+                }
+
+                Logger.Log("Failed to locate RADS directory");
+                return null;
+            }
+            else
             {
-                Logger.Log("Success!");
-                return v2;
-            }
+                Logger.Log("LeftShit is NOT down - automatic scan");
 
-            var v3 = AskUser();
-            Logger.Log($"AskUser: {v3} (exists: {Directory.Exists(v3)})");
-            if (Directory.Exists(v3))
-            {
-                Logger.Log("Success!");
-                return v3;
-            }
+                var v1 = RiotGamesReg();
+                Logger.Log($"RiotGamesReg: {v1} (exists: {Directory.Exists(v1)})");
+                if (Directory.Exists(v1))
+                {
+                    Logger.Log("Success!");
+                    return v1;
+                }
 
-            Logger.Log("Failed to locate RADS directory");
-            return null;
+                var v2 = RiotGamesIncReg();
+                Logger.Log($"RiotGamesIncReg: {v2} (exists: {Directory.Exists(v2)})");
+                if (Directory.Exists(v2))
+                {
+                    Logger.Log("Success!");
+                    return v2;
+                }
+
+                var v3 = AskUser();
+                Logger.Log($"AskUser: {v3} (exists: {Directory.Exists(v3)})");
+                if (Directory.Exists(v3))
+                {
+                    Logger.Log("Success!");
+                    return v3;
+                }
+
+                Logger.Log("Failed to locate RADS directory");
+                return null;
+            }
         }
 
         private static string RiotGamesReg()
