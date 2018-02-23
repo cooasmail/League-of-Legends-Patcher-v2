@@ -1,4 +1,7 @@
 # League of Legends Patcher v2
+
+![](https://i.imgur.com/mtNTYiQ.png)
+
 ## What's a difference between this patcher and other cheats?
 
 It changes the way how the game works (applies custom patches) so you don't have to run any 3rd part application in the background.
