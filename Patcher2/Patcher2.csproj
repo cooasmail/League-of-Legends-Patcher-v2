@@ -78,6 +78,7 @@
     <Compile Include="BinScanner.cs" />
     <Compile Include="Features\FOV.cs" />
     <Compile Include="Features\OOM.cs" />
+    <Compile Include="Features\TopView.cs" />
     <Compile Include="Features\ZoomIn.cs" />
     <Compile Include="Features\ZoomOut.cs" />
     <Compile Include="Forms\MainForm.cs">

@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.animationTimer = new System.Windows.Forms.Timer(this.components);
+            this.topViewCbox = new System.Windows.Forms.CheckBox();
             this.animationPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +64,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.topViewCbox);
             this.groupBox1.Controls.Add(this.zoomOutCbox);
             this.groupBox1.Controls.Add(this.zoomInCbox);
             this.groupBox1.Controls.Add(this.oomCbox);
@@ -70,7 +72,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(253, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 139);
+            this.groupBox1.Size = new System.Drawing.Size(200, 150);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Features";
@@ -171,6 +173,17 @@
             this.animationTimer.Interval = 20;
             this.animationTimer.Tick += new System.EventHandler(this.animationTimer_Tick);
             // 
+            // topViewCbox
+            // 
+            this.topViewCbox.AutoSize = true;
+            this.topViewCbox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.topViewCbox.Location = new System.Drawing.Point(15, 121);
+            this.topViewCbox.Name = "topViewCbox";
+            this.topViewCbox.Size = new System.Drawing.Size(76, 19);
+            this.topViewCbox.TabIndex = 7;
+            this.topViewCbox.Text = "TOP View";
+            this.topViewCbox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,5 +216,6 @@
         private System.Windows.Forms.Button patchBtn;
         private System.Windows.Forms.Button backupBtn;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox topViewCbox;
     }
 }

@@ -313,6 +313,18 @@ namespace Patcher2.Forms
                     }
                 }
 
+                if (this.topViewCbox.Checked)
+                {
+                    if (TopView.Process(ref buffer))
+                    {
+                        resultSb.AppendLine("TOP View --> Success");
+                    }
+                    else
+                    {
+                        resultSb.AppendLine("TOP View --> Fail");
+                    }
+                }
+
                 resultSb.Append("\r\nIf any of these failed, here are the possible reasons:\r\n* Already patched\r\n* Patcher is outdated");
 
                 File.WriteAllBytes(this.exePath, buffer);
