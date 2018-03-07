@@ -1,4 +1,5 @@
 ﻿using System;
+using Patcher2.Forms;
 
 namespace Patcher2.Features
 {
@@ -16,7 +17,23 @@ namespace Patcher2.Features
                 return false;
             }
 
-            var valueBin = BitConverter.GetBytes(52f);
+            var textFrm = new TextForm();
+            textFrm.titleLbl.Text = $"FOV Value:{Environment.NewLine}(45 - default)";
+            textFrm.ShowDialog();
+
+            if (!textFrm.Success)
+            {
+                return false;
+            }
+
+            var valueStr = textFrm.valueLbl.Text.Trim();
+
+            if(!float.TryParse(valueStr, out var value))
+            {
+                return false;
+            }
+
+            var valueBin = BitConverter.GetBytes(value);
 
             buffer[index + 9] = 0xB8;
             buffer[index + 10] = valueBin[0];
