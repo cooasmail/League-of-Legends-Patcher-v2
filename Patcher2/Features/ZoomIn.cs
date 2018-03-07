@@ -8,7 +8,7 @@
         // [4bytes] maxss xmm0,xmm1 <--- MOVSS
 
         // #2
-        // [6bytes] mov eax,[esi+0000022C]
+        // [6bytes] mov eax,[esi+00000228]
         // [5bytes] movss xmm0,[eax+24]
         // [4bytes] maxss xmm0,xmm1 <--- MOVSS
 
@@ -20,7 +20,7 @@
                 return false;
             }
 
-            var index2 = BinScanner.FindPattern(buffer, "8B 86 2C 02 00 00 F3 0F 10 40 24 F3 0F 5F C1");
+            var index2 = BinScanner.FindPattern(buffer, "8B 86 28 02 00 00 F3 0F 10 40 24 F3 0F 5F C1");
             if (index2 == 0)
             {
                 return false;

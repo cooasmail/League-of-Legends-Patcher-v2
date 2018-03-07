@@ -3,7 +3,7 @@
     public static class OOM
     {
         // #1
-        // [8bytes] movss [esi+00000130],xmm2 <--- NOP
+        // [8bytes] movss [esi+0000012C],xmm2 <--- NOP
         // [1byte] ja ..
 
         // #2
@@ -12,13 +12,13 @@
 
         public static bool Process(ref byte[] buffer)
         {
-            var index1 = BinScanner.FindPattern(buffer, "F3 0F 11 96 30 01 00 00 77");
+            var index1 = BinScanner.FindPattern(buffer, "F3 0F 11 96 2C 01 00 00 77");
             if (index1 == 0)
             {
                 return false;
             }
 
-            var index2 = BinScanner.FindPattern(buffer, "F3 0F 11 86 38 01 00 00 0F 86");
+            var index2 = BinScanner.FindPattern(buffer, "F3 0F 11 86 34 01 00 00 0F 86");
             if (index2 == 0)
             {
                 return false;

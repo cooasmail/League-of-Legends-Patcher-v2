@@ -2,7 +2,7 @@
 {
     public static class ZoomOut
     {
-        // [6bytes] eax,[esi+0000022C]
+        // [6bytes] eax,[esi+00000228]
         // [5bytes] xmm0,[eax+28]
         // [2bytes] jmp
         // [8bytes] movss xmm0,[?]
@@ -10,7 +10,7 @@
 
         public static bool Process(ref byte[] buffer)
         {
-            var index = BinScanner.FindPattern(buffer, "8B 86 2C 02 00 00 F3 0F 10 40 28 EB 08 F3 0F 10 05 ? ? ? ? 0F 2F C8");
+            var index = BinScanner.FindPattern(buffer, "8B 86 28 02 00 00 F3 0F 10 40 28 EB 08 F3 0F 10 05 ? ? ? ? 0F 2F C8");
             if (index == 0)
             {
                 return false;
