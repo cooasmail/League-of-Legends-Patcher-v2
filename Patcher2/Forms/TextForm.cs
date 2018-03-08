@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Patcher2.Forms
@@ -14,6 +10,8 @@ namespace Patcher2.Forms
         public TextForm()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.leaguepatcher;
+            this.Text = "Patcher v2 :: Text Input";
         }
 
         private void okBtn_Click(object sender, EventArgs e)

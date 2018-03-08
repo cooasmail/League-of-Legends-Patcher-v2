@@ -7,7 +7,6 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Patcher2.Features;
-using SimpleLogger;
 using Brush = System.Drawing.Brush;
 using Color = System.Drawing.Color;
 using Control = System.Windows.Forms.Control;
